@@ -1,20 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Clock from '../components/Clock';
 import GlobalStyles from './GlobalStyles';
 
 function App() {
-  const [dateState, setDateState] = useState(new Date());
   const [themeColor, setThemeColor] = useState('#045975');
-
-  // useEffect(() => {
-  //   setInterval(() => setDateState(new Date()), 1000);
-  // }, []);
+  const [showClock, setShowClock] = useState(false);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
+      setShowClock(true);
     } else if (document.exitFullscreen) {
       document.exitFullscreen();
+      setShowClock(false);
     }
   };
 
@@ -23,15 +21,19 @@ function App() {
       <GlobalStyles />
       <div>
         <button onClick={toggleFullScreen}>FULLSCREEN</button>
-        <br />
-        <br />
-        <input
-          type='color'
-          value={themeColor}
-          onChange={(e) => setThemeColor(e.target.value)}
-        />
-
-        <Clock currentTime={dateState} themeColor={themeColor} />
+        {!showClock ? (
+          <>
+            <br />
+            <br />
+            <input
+              type='color'
+              value={themeColor}
+              onChange={(e) => setThemeColor(e.target.value)}
+            />
+          </>
+        ) : (
+          <Clock themeColor={themeColor} />
+        )}
       </div>
     </>
   );
