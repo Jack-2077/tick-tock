@@ -21,7 +21,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: "Google Sans Display", Roboto, Arial, sans-serif;
-    background: #232529;
+    background: #000;
     color: #e2e3e7;
   }
 `;

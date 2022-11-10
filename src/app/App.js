@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Clock from '../components/Clock';
+import Card from '../components/Card';
+import DigitalClock from '../components/DigitalClock';
 import GlobalStyles from './GlobalStyles';
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <h1>Tick Tock</h1>
+      <h2>Select your clock</h2>
+      <Card />
       <div>
         <button onClick={toggleFullScreen}>FULLSCREEN</button>
         {!showClock ? (
@@ -32,7 +36,7 @@ function App() {
             />
           </>
         ) : (
-          <Clock themeColor={themeColor} />
+          <DigitalClock themeColor={themeColor} />
         )}
       </div>
     </>
