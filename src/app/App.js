@@ -38,7 +38,8 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <h1>Tick Tock</h1>
+      <DigitalClock primaryColor={'red'} />
+      {/* <h1>Tick Tock</h1>
       <h2>Select your clock</h2>
       <StyledContainer>
         <Card clock={'clock-1'} handleActiveClock={setActive}>
@@ -51,7 +52,7 @@ function App() {
         <Card clock={'clock-3'} handleActiveClock={setActive}>
           <DigitalClock />
         </Card>
-      </StyledContainer>
+      </StyledContainer> */}
       {active === 'clock-1' && <FlipClock primaryColor={color} />}
       {active === 'clock-2' && <AnalogClock primaryColor={color} />}
       {active === 'clock-3' && <DigitalClock primaryColor={color} />}
