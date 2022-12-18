@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, cloneElement } from 'react';
 import styled from 'styled-components/macro';
 import DigitalClockImg from '../assets/DigitalClock.jpg';
 
-const StyledCard = styled.div`
+const StyledCard1 = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
@@ -57,17 +57,71 @@ const StyledCard = styled.div`
     }
   }
 `;
-export default function Card() {
+
+const StyledCard = styled.div.attrs((props) => ({
+  style: {
+    color: props.color,
+  },
+}))`
+  background-color: rgb(23, 177, 141);
+  width: 20vw;
+  button {
+    margin: 1em 0;
+    width: 100%;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  input::-webkit-color-swatch {
+    border-radius: 50%;
+    border: none;
+  }
+
+  input::-moz-color-swatch {
+    border-radius: 50%;
+    border: none;
+  }
+`;
+
+export default function Card({ clock, handleActiveClock, children }) {
+  const [primaryColor, setThemeColor] = useState('#045975');
+  const [showClock, setShowClock] = useState(false);
+
+  const selectClockHandler = () => {
+    setShowClock(!showClock);
+
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  };
+
+  if (showClock) {
+    return <>{cloneElement(children, { primaryColor })}</>;
+  }
+
   return (
-    <StyledCard>
-      <div className='card-info'>
-        <h2>Digital Clock</h2>
-        <p>Customize</p>
-      </div>
-      <div className='card-preview'>
-        <img src={DigitalClockImg} alt='clock' />
-        <button>Select</button>
-      </div>
+    <StyledCard color={primaryColor}>
+      <br />
+      <br />
+      <span>{new Date().toLocaleTimeString('it-IT')}</span>
+      <button onClick={selectClockHandler}>Select</button>
+      <button>Edit</button>
+      <input
+        type='color'
+        value={primaryColor}
+        onChange={(e) => setThemeColor(e.target.value)}
+      />
     </StyledCard>
   );
 }
