@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <DigitalClock primaryColor={'red'} />
+      <FlipClock primaryColor={'red'} />
       {/* <h1>Tick Tock</h1>
       <h2>Select your clock</h2>
       <StyledContainer>
