@@ -81,9 +81,9 @@ export default function NewTest({ primaryColor }) {
 
   return (
     <>
-      <Best digit={hours} />
-      <Best digit={minutes} />
-      <Best digit={seconds} />
+      <Best digit={hours} type='h' />
+      <Best digit={minutes} type='m' />
+      <Best digit={seconds} type='s' />
       {/* <ul className='flip  play'>
           <li className='flip-clock-before'>
             <a href='#root'>
@@ -114,17 +114,15 @@ export default function NewTest({ primaryColor }) {
   );
 }
 
-const Best = ({ digit }) => {
-  let shadowDigit = digit !== 59 ? digit + 1 : '00';
+const Best = ({ digit, type }) => {
+  let shadowDigit = digit - 1;
 
-  if (digit <= 9) {
-    shadowDigit = digit === 9 ? 10 : '0' + (digit + 1);
-    digit = '0' + digit;
-  }
+  // shadowDigit = digit !== 59 ? digit - 1 : '00';
 
-  //59
-  //59
-  //23
+  // if (digit <= 9) {
+  //   shadowDigit = digit === 9 ? 10 : '0' + (digit + 1);
+  //   digit = '0' + digit;
+  // }
 
   return (
     <StyledContainer key={digit}>
@@ -146,11 +144,11 @@ const Best = ({ digit }) => {
             <a href='#root'>
               <div className='up'>
                 <div className='shadow' />
-                <div className='inn'>{shadowDigit}</div>
+                <div className='inn'>{shadowDigit + 1}</div>
               </div>
               <div className='down'>
                 <div className='shadow' />
-                <div className='inn'>{shadowDigit}</div>
+                <div className='inn'>{shadowDigit + 1}</div>
               </div>
             </a>
           </li>
