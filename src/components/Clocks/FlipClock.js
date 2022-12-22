@@ -1,29 +1,50 @@
 import React, { memo, useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
 import { StyledContainer } from './FlipClockStyles';
 
-const bounce = keyframes`
-0% {
-    transform: translateY(-100px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-`;
+const MemoizedDigit = memo(({ digit, maxValue }) => {
+  let shadowDigit = digit - 1;
 
-const Test = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: black;
-  animation: ${bounce} 0.4s;
-`;
+  if (digit <= 9) {
+    shadowDigit = digit === 0 ? maxValue : '0' + shadowDigit;
 
-const MemoizedDigit = memo(({ digit }) => {
-  return <Test key={digit}>{digit}</Test>;
+    digit = '0' + digit;
+  }
+
+  return (
+    <StyledContainer key={digit}>
+      <div className='clock flip-clock-wrapper' style={{ margin: '2em' }}>
+        <ul className='flip play'>
+          <li className='flip-clock-before'>
+            <a href='#root'>
+              <div className='up'>
+                <div className='shadow' />
+                <div className='inn'>{shadowDigit}</div>
+              </div>
+              <div className='down'>
+                <div className='shadow' />
+                <div className='inn'>{shadowDigit}</div>
+              </div>
+            </a>
+          </li>
+          <li className='flip-clock-active'>
+            <a href='#root'>
+              <div className='up'>
+                <div className='shadow' />
+                <div className='inn'>{digit}</div>
+              </div>
+              <div className='down'>
+                <div className='shadow' />
+                <div className='inn'>{digit}</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </StyledContainer>
+  );
 });
 
-export function FlipClock({ primaryColor }) {
+export default function FlipClock({ primaryColor }) {
   const [time, setTime] = useState(() => new Date());
 
   // useEffect(() => {
@@ -41,9 +62,9 @@ export function FlipClock({ primaryColor }) {
     <div
       style={{
         color: primaryColor,
-        fontSize: '15vh',
-        marginLeft: '50vw',
-        marginTop: '150px',
+        fontSize: '5vh',
+        marginLeft: '10vw',
+        display: 'flex',
       }}
     >
       <MemoizedDigit digit={hours} />
@@ -54,106 +75,3 @@ export function FlipClock({ primaryColor }) {
     </div>
   );
 }
-
-export default function NewTest({ primaryColor }) {
-  const [time, setTime] = useState(() => new Date());
-
-  console.log(time);
-
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     setTime(new Date());
-  //   }, 1000);
-  //   return () => clearInterval(id);
-  // }, []);
-
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-
-  const seconds = time.getSeconds();
-
-  // let shadowSecond = seconds !== 59 ? seconds + 1 : '00';
-
-  // if (seconds <= 9) {
-  //   shadowSecond = seconds === 9 ? 10 : '0' + (seconds + 1);
-  //   seconds = '0' + seconds;
-  // }
-
-  return (
-    <>
-      <Best digit={hours} type='h' />
-      <Best digit={minutes} type='m' />
-      <Best digit={seconds} type='s' />
-      {/* <ul className='flip  play'>
-          <li className='flip-clock-before'>
-            <a href='#root'>
-              <div className='up'>
-                <div className='shadow' />
-                <div className='inn'>1</div>
-              </div>
-              <div className='down'>
-                <div className='shadow' />
-                <div className='inn'>1</div>
-              </div>
-            </a>
-          </li>
-          <li className='flip-clock-active'>
-            <a href='#root'>
-              <div className='up'>
-                <div className='shadow' />
-                <div className='inn'>0</div>
-              </div>
-              <div className='down'>
-                <div className='shadow' />
-                <div className='inn'>0</div>
-              </div>
-            </a>
-          </li>
-        </ul> */}
-    </>
-  );
-}
-
-const Best = ({ digit, type }) => {
-  let shadowDigit = digit - 1;
-
-  // shadowDigit = digit !== 59 ? digit - 1 : '00';
-
-  // if (digit <= 9) {
-  //   shadowDigit = digit === 9 ? 10 : '0' + (digit + 1);
-  //   digit = '0' + digit;
-  // }
-
-  return (
-    <StyledContainer key={digit}>
-      <div className='clock flip-clock-wrapper' style={{ margin: '2em' }}>
-        <ul className='flip play'>
-          <li className='flip-clock-before'>
-            <a href='#root'>
-              <div className='up'>
-                <div className='shadow' />
-                <div className='inn'>{digit}</div>
-              </div>
-              <div className='down'>
-                <div className='shadow' />
-                <div className='inn'>{digit}</div>
-              </div>
-            </a>
-          </li>
-          <li className='flip-clock-active'>
-            <a href='#root'>
-              <div className='up'>
-                <div className='shadow' />
-                <div className='inn'>{shadowDigit + 1}</div>
-              </div>
-              <div className='down'>
-                <div className='shadow' />
-                <div className='inn'>{shadowDigit + 1}</div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </StyledContainer>
-  );
-};

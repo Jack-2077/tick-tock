@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const StyledContainer = styled.div`
   .flip-clock-wrapper a {
@@ -13,20 +13,6 @@ export const StyledContainer = styled.div`
 
   .flip-clock-wrapper ul {
     list-style: none;
-  }
-
-  .flip-clock-wrapper.clearfix:before,
-  .flip-clock-wrapper.clearfix:after {
-    content: ' ';
-    display: table;
-  }
-
-  .flip-clock-wrapper.clearfix:after {
-    clear: both;
-  }
-
-  .flip-clock-wrapper.clearfix {
-    *zoom: 1;
   }
 
   /* Main */
