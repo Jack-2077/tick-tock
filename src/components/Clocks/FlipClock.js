@@ -6,7 +6,6 @@ const MemoizedDigit = memo(({ digit, maxValue }) => {
 
   if (digit <= 9) {
     shadowDigit = digit === 0 ? maxValue : '0' + shadowDigit;
-
     digit = '0' + digit;
   }
 
@@ -67,11 +66,11 @@ export default function FlipClock({ primaryColor }) {
         display: 'flex',
       }}
     >
-      <MemoizedDigit digit={hours} />
+      <MemoizedDigit digit={hours} maxValue={23} />
       <br />
-      <MemoizedDigit digit={minutes} />
+      <MemoizedDigit digit={minutes} maxValue={59} />
       <br />
-      <MemoizedDigit digit={seconds} />
+      <MemoizedDigit digit={seconds} maxValue={59} />
     </div>
   );
 }

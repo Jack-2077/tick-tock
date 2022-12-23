@@ -1,5 +1,57 @@
 import styled, { keyframes } from 'styled-components';
 
+const show = keyframes`
+0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+`;
+
+const hide = keyframes`
+0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+`;
+
+const turn = keyframes`
+0% {
+      transform: rotateX(90deg);
+    }
+
+    100% {
+      transform: rotateX(0deg);
+    }`;
+
+const turn2 = keyframes`
+0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(-90deg);
+  }
+`;
+
+const asd = keyframes`
+0% {
+      z-index: 2;
+    }
+
+    20% {
+      z-index: 4;
+    }
+
+    100% {
+      z-index: 4;
+    }`;
+
 export const StyledContainer = styled.div`
   .flip-clock-wrapper a {
     cursor: pointer;
@@ -19,6 +71,7 @@ export const StyledContainer = styled.div`
   .flip-clock-wrapper {
     font: normal 11px 'Helvetica Neue', Helvetica, sans-serif;
     -webkit-user-select: none;
+    user-select: none;
   }
 
   .flip-clock-meridium {
@@ -104,10 +157,6 @@ export const StyledContainer = styled.div`
   }
 
   .flip-clock-wrapper ul li a div.up {
-    -webkit-transform-origin: 50% 100%;
-    -moz-transform-origin: 50% 100%;
-    -ms-transform-origin: 50% 100%;
-    -o-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
     top: 0;
   }
@@ -125,10 +174,6 @@ export const StyledContainer = styled.div`
   }
 
   .flip-clock-wrapper ul li a div.down {
-    -webkit-transform-origin: 50% 0;
-    -moz-transform-origin: 50% 0;
-    -ms-transform-origin: 50% 0;
-    -o-transform-origin: 50% 0;
     transform-origin: 50% 0;
     bottom: 0;
     border-bottom-left-radius: 6px;
@@ -168,9 +213,7 @@ export const StyledContainer = styled.div`
   }
 
   .flip-clock-wrapper ul.play li.flip-clock-active {
-    -webkit-animation: asd 0.5s 0.5s linear both;
-    -moz-animation: asd 0.5s 0.5s linear both;
-    animation: asd 0.5s 0.5s linear both;
+    animation: ${asd} 0.5s 0.5s linear both;
     z-index: 5;
   }
 
@@ -221,154 +264,14 @@ export const StyledContainer = styled.div`
     bottom: 30px;
   }
 
-  @-webkit-keyframes asd {
-    0% {
-      z-index: 2;
-    }
-
-    20% {
-      z-index: 4;
-    }
-
-    100% {
-      z-index: 4;
-    }
-  }
-
-  @-moz-keyframes asd {
-    0% {
-      z-index: 2;
-    }
-
-    20% {
-      z-index: 4;
-    }
-
-    100% {
-      z-index: 4;
-    }
-  }
-
-  @-o-keyframes asd {
-    0% {
-      z-index: 2;
-    }
-
-    20% {
-      z-index: 4;
-    }
-
-    100% {
-      z-index: 4;
-    }
-  }
-
-  @keyframes asd {
-    0% {
-      z-index: 2;
-    }
-
-    20% {
-      z-index: 4;
-    }
-
-    100% {
-      z-index: 4;
-    }
-  }
-
   .flip-clock-wrapper ul.play li.flip-clock-active .down {
     z-index: 2;
-    -webkit-animation: turn 0.5s 0.5s linear both;
-    -moz-animation: turn 0.5s 0.5s linear both;
-    animation: turn 0.5s 0.5s linear both;
-  }
-
-  @-webkit-keyframes turn {
-    0% {
-      -webkit-transform: rotateX(90deg);
-    }
-
-    100% {
-      -webkit-transform: rotateX(0deg);
-    }
-  }
-
-  @-moz-keyframes turn {
-    0% {
-      -moz-transform: rotateX(90deg);
-    }
-
-    100% {
-      -moz-transform: rotateX(0deg);
-    }
-  }
-
-  @-o-keyframes turn {
-    0% {
-      -o-transform: rotateX(90deg);
-    }
-
-    100% {
-      -o-transform: rotateX(0deg);
-    }
-  }
-
-  @keyframes turn {
-    0% {
-      transform: rotateX(90deg);
-    }
-
-    100% {
-      transform: rotateX(0deg);
-    }
+    animation: ${turn} 0.5s 0.5s linear both;
   }
 
   .flip-clock-wrapper ul.play li.flip-clock-before .up {
     z-index: 2;
-    -webkit-animation: turn2 0.5s linear both;
-    -moz-animation: turn2 0.5s linear both;
-    animation: turn2 0.5s linear both;
-  }
-
-  @-webkit-keyframes turn2 {
-    0% {
-      -webkit-transform: rotateX(0deg);
-    }
-
-    100% {
-      -webkit-transform: rotateX(-90deg);
-    }
-  }
-
-  @-moz-keyframes turn2 {
-    0% {
-      -moz-transform: rotateX(0deg);
-    }
-
-    100% {
-      -moz-transform: rotateX(-90deg);
-    }
-  }
-
-  @-o-keyframes turn2 {
-    0% {
-      -o-transform: rotateX(0deg);
-    }
-
-    100% {
-      -o-transform: rotateX(-90deg);
-    }
-  }
-
-  @keyframes turn2 {
-    0% {
-      transform: rotateX(0deg);
-    }
-
-    100% {
-      transform: rotateX(-90deg);
-    }
+    animation: ${turn2} 0.5s linear both;
   }
 
   .flip-clock-wrapper ul li.flip-clock-active {
@@ -377,7 +280,6 @@ export const StyledContainer = styled.div`
 
   /* SHADOW */
   .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
     background: -webkit-gradient(
       linear,
       left top,
@@ -385,17 +287,10 @@ export const StyledContainer = styled.div`
       color-stop(0%, rgba(0, 0, 0, 0.1)),
       color-stop(100%, black)
     );
-    background: linear, top, rgba(0, 0, 0, 0.1) 0%, black 100%;
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
-    background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, black 100%;
-    -webkit-animation: show 0.5s linear both;
-    -moz-animation: show 0.5s linear both;
-    animation: show 0.5s linear both;
+    animation: ${show} 0.5s linear both;
   }
 
   .flip-clock-wrapper ul.play li.flip-clock-active .up .shadow {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
     background: -webkit-gradient(
       linear,
       left top,
@@ -403,18 +298,11 @@ export const StyledContainer = styled.div`
       color-stop(0%, rgba(0, 0, 0, 0.1)),
       color-stop(100%, black)
     );
-    background: linear, top, rgba(0, 0, 0, 0.1) 0%, black 100%;
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
-    background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, black 100%;
-    -webkit-animation: hide 0.5s 0.3s linear both;
-    -moz-animation: hide 0.5s 0.3s linear both;
-    animation: hide 0.5s 0.3s linear both;
+    animation: ${hide} 0.5s 0.3s linear both;
   }
 
   /*DOWN*/
   .flip-clock-wrapper ul.play li.flip-clock-before .down .shadow {
-    background: -moz-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
     background: -webkit-gradient(
       linear,
       left top,
@@ -422,17 +310,10 @@ export const StyledContainer = styled.div`
       color-stop(0%, black),
       color-stop(100%, rgba(0, 0, 0, 0.1))
     );
-    background: linear, top, black 0%, rgba(0, 0, 0, 0.1) 100%;
-    background: -o-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
-    background: -ms-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
-    background: linear, to bottom, black 0%, rgba(0, 0, 0, 0.1) 100%;
-    -webkit-animation: show 0.5s linear both;
-    -moz-animation: show 0.5s linear both;
-    animation: show 0.5s linear both;
+    animation: ${show} 0.5s linear both;
   }
 
   .flip-clock-wrapper ul.play li.flip-clock-active .down .shadow {
-    background: -moz-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
     background: -webkit-gradient(
       linear,
       left top,
@@ -440,92 +321,6 @@ export const StyledContainer = styled.div`
       color-stop(0%, black),
       color-stop(100%, rgba(0, 0, 0, 0.1))
     );
-    background: linear, top, black 0%, rgba(0, 0, 0, 0.1) 100%;
-    background: -o-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
-    background: -ms-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
-    background: linear, to bottom, black 0%, rgba(0, 0, 0, 0.1) 100%;
-    -webkit-animation: hide 0.5s 0.3s linear both;
-    -moz-animation: hide 0.5s 0.3s linear both;
-    animation: hide 0.5s 0.2s linear both;
-  }
-
-  @-webkit-keyframes show {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-moz-keyframes show {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-o-keyframes show {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes show {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes hide {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @-moz-keyframes hide {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @-o-keyframes hide {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes hide {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
+    animation: ${hide} 0.5s 0.2s linear both;
   }
 `;
