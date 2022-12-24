@@ -66,9 +66,7 @@ export default function FlipClock({ primaryColor }) {
   return (
     <StyledFlipClockContainer>
       <MemoizedDigit digit={hours} maxValue={23} />
-      <br />
       <MemoizedDigit digit={minutes} maxValue={59} />
-      <br />
       <MemoizedDigit digit={seconds} maxValue={59} />
     </StyledFlipClockContainer>
   );

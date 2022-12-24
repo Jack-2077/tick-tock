@@ -53,14 +53,13 @@ const asd = keyframes`
     }`;
 
 export const StyledFlipClockContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 export const StyledFlipClockWrapper = styled.div`
-  font-size: 40px;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   -webkit-user-select: none;
   user-select: none;
@@ -82,8 +81,8 @@ export const StyledFlipClockWrapper = styled.div`
     position: relative;
     float: left;
     margin: 10px;
-    width: 170px;
-    height: 135px;
+    min-width: 170px;
+    min-height: 135px;
     font-weight: bold;
     line-height: 87px;
     border-radius: 6px;
@@ -158,12 +157,13 @@ export const StyledFlipClockWrapper = styled.div`
     z-index: 1;
     width: 100%;
     height: 200%;
-    color: #ccc;
+    color: ${(props) => props.color};
     text-shadow: 0 1px 2px #000;
     text-align: center;
     line-height: 130px;
     background-color: #333;
     border-radius: 6px;
+    /* font-size: max(20vw, 30px); */
     font-size: 120px;
   }
 
