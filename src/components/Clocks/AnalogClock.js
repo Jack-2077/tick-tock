@@ -7,29 +7,28 @@ const StyledClockHand = styled.div`
   transform: rotate(${(props) => props.angle}deg);
 `;
 
-const ClockHand = ({ time, type, angle }) => {
-  const angleToRotate = time * angle;
-  return <StyledClockHand className={type + '_hand'} angle={angleToRotate} />;
-};
+const MemoizedClockHand = memo(({ time, type, angle }) => {
+  return <StyledClockHand className={type + '_hand'} angle={time * angle} />;
+});
 
 export default function AnalogClock({ primaryColor }) {
   const [time, setTime] = useState(() => new Date());
   const hour = time.getHours();
   const min = time.getMinutes();
   const sec = time.getSeconds();
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     setTime(new Date());
+  //   }, 1000);
+  //   return () => clearInterval(id);
+  // }, []);
 
   return (
     <StyledAnalogClock>
       <div className='clock'>
-        <ClockHand time={hour} angle={30} type='hour' />
-        <ClockHand time={min} angle={6} type='min' />
-        <ClockHand time={sec} angle={6} type='sec' />
+        <MemoizedClockHand time={hour} angle={30} type='hour' />
+        <MemoizedClockHand time={min} angle={6} type='min' />
+        <MemoizedClockHand time={sec} angle={6} type='sec' />
         <span className='twelve'>12</span>
         <span className='one'>1</span>
         <span className='two'>2</span>
