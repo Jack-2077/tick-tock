@@ -38,10 +38,10 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <FlipClock primaryColor='red' />
-      {/* <h1>Tick Tock</h1>
-      <h2>Select your clock</h2>
-      <StyledContainer>
+      <AnalogClock primaryColor={'red'} />
+      {/* <FlipClock primaryColor='red' /> */}
+
+      {/* <StyledContainer>
         <Card clock={'clock-1'} handleActiveClock={setActive}>
           <FlipClock />
         </Card>
