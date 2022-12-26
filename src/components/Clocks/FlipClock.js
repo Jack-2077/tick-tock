@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import {
   StyledFlipClockWrapper,
   StyledFlipClockContainer,
-} from './FlipClockStyles';
+} from '../styles/FlipClockStyles';
 
 const MemoizedDigit = memo(({ digit, maxValue }) => {
   let shadowDigit = digit - 1;
