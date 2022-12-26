@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import { StyledAnalogClock } from '../styles/AnalogClockStyles';
 
 const StyledClockHand = styled.div`
-  transform: rotate(${(props) => props.angle}deg);
+  transform: rotateZ(${(props) => props.angle}deg);
 `;
 
-const MemoizedClockHand = memo(({ time, type, angle }) => {
-  return <StyledClockHand className={type + '_hand'} angle={time * angle} />;
+const MemoizedClockHand = memo(({ time, type, angleToRotate }) => {
+  return (
+    <StyledClockHand className={type + '_hand'} angle={time * angleToRotate} />
+  );
 });
 
 export default function AnalogClock({ primaryColor }) {
-  const [time, setTime] = useState(() => new Date());
-  const hour = time.getHours();
-  const min = time.getMinutes();
-  const sec = time.getSeconds();
+  const [time, setTime] = useState(() => new Date('Dec 25 2022 10:10:35'));
+
   // useEffect(() => {
   //   const id = setInterval(() => {
   //     setTime(new Date());
@@ -24,11 +24,23 @@ export default function AnalogClock({ primaryColor }) {
   // }, []);
 
   return (
-    <StyledAnalogClock>
+    <StyledAnalogClock color={primaryColor}>
       <div className='clock'>
-        <MemoizedClockHand time={hour} angle={30} type='hour' />
-        <MemoizedClockHand time={min} angle={6} type='min' />
-        <MemoizedClockHand time={sec} angle={6} type='sec' />
+        <MemoizedClockHand
+          time={time.getHours()}
+          angleToRotate={30}
+          type='hour'
+        />
+        <MemoizedClockHand
+          time={time.getMinutes()}
+          angleToRotate={6}
+          type='min'
+        />
+        <MemoizedClockHand
+          time={time.getSeconds()}
+          angleToRotate={6}
+          type='sec'
+        />
         <span className='twelve'>12</span>
         <span className='one'>1</span>
         <span className='two'>2</span>
