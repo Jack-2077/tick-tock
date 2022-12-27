@@ -59,23 +59,29 @@ const StyledCard1 = styled.div`
   }
 `;
 
-const StyledCard = styled.div.attrs((props) => ({
-  style: {
-    color: props.color,
-  },
-}))`
-  /* background-color: rgb(23, 177, 141); */
+const StyledCard = styled.div`
   background: rgb(24 24 27 / 1);
   margin: 0 auto;
   display: flex;
 
   .info_container {
+    padding: 2rem;
     h3 {
       font-size: max(4em, 30px);
     }
   }
 
-  .img__container {
+  .input_buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .edit-color {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img_container {
     background: ${(props) => props.color};
     padding: 1rem;
     display: flex;
@@ -90,17 +96,27 @@ const StyledCard = styled.div.attrs((props) => ({
     height: 350px;
   }
   button {
+    cursor: pointer;
+    color: #ffffff;
+    height: 40px;
+    font-size: medium;
+    user-select: none;
     background-color: rgb(79 70 229 / 1);
     border-radius: 0.75rem;
-    width: 3.5rem;
+    padding: 10px 16px;
+    transition: transform 150ms;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
   }
 
   input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -140,19 +156,21 @@ export default function Card({ clock, primaryColor, children }) {
     <StyledCard color={primaryColor}>
       <div className='info_container'>
         <h3>Pixel Clock</h3>
-        <div>
-          <label htmlFor='input-color'>Edit</label>
-          <input
-            type='color'
-            name='input-color'
-            value={themeColor}
-            onChange={(e) => setThemeColor(e.target.value)}
-          />
+        <div className='input_buttons'>
+          <div className='edit-color'>
+            <label htmlFor='input-color'>Edit</label>
+            <input
+              type='color'
+              name='input-color'
+              value={themeColor}
+              onChange={(e) => setThemeColor(e.target.value)}
+            />
+          </div>
+          <button onClick={selectClockHandler}>Select</button>
         </div>
-        <button onClick={selectClockHandler}>Select</button>
       </div>
 
-      <div className='img__container'>
+      <div className='img_container'>
         <img src={placeholder} alt='preview of clock' />
       </div>
     </StyledCard>
