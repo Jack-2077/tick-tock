@@ -4,6 +4,7 @@ import {
   StyledFlipClockContainer,
 } from '../styles/FlipClockStyles';
 
+let inputColor;
 const MemoizedDigit = memo(({ digit, maxValue }) => {
   let shadowDigit = digit - 1;
 
@@ -17,7 +18,7 @@ const MemoizedDigit = memo(({ digit, maxValue }) => {
   }
 
   return (
-    <StyledFlipClockWrapper key={digit}>
+    <StyledFlipClockWrapper key={digit} color={inputColor}>
       <ul className='flip play'>
         <li className='flip-clock-before'>
           <a href='#root'>
@@ -49,6 +50,7 @@ const MemoizedDigit = memo(({ digit, maxValue }) => {
 });
 
 export default function FlipClock({ primaryColor }) {
+  inputColor = primaryColor;
   const [time, setTime] = useState(() => new Date());
   // const time = new Date('December 25, 1995 12:35:10');
 

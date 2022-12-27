@@ -6,6 +6,7 @@ import GlobalStyles from './GlobalStyles';
 
 const StyledContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 2em;
   justify-content: center;
 `;
@@ -38,10 +39,9 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <AnalogClock primaryColor={'red'} />
       {/* <FlipClock primaryColor='red' /> */}
 
-      {/* <StyledContainer>
+      <StyledContainer>
         <Card clock={'clock-1'} handleActiveClock={setActive}>
           <FlipClock />
         </Card>
@@ -52,7 +52,7 @@ function App() {
         <Card clock={'clock-3'} handleActiveClock={setActive}>
           <DigitalClock />
         </Card>
-      </StyledContainer> */}
+      </StyledContainer>
       {active === 'clock-1' && <FlipClock primaryColor={color} />}
       {active === 'clock-2' && <AnalogClock primaryColor={color} />}
       {active === 'clock-3' && <DigitalClock primaryColor={color} />}

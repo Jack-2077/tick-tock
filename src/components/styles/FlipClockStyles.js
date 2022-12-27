@@ -58,6 +58,7 @@ export const StyledFlipClockContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: red;
 `;
 export const StyledFlipClockWrapper = styled.div`
   font-family: 'Helvetica Neue', Helvetica, sans-serif;

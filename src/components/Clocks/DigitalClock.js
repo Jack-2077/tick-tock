@@ -12,12 +12,12 @@ const StyledDigitalClock = styled.div`
 
 export default function DigitalClock({ primaryColor }) {
   const [time, setTime] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     setTime(new Date());
+  //   }, 1000);
+  //   return () => clearInterval(id);
+  // }, []);
 
   return (
     <StyledDigitalClock color={primaryColor}>

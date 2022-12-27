@@ -1,6 +1,7 @@
 import React, { useState, cloneElement } from 'react';
 import styled from 'styled-components/macro';
 import DigitalClockImg from '../assets/DigitalClock.jpg';
+import placeholder from '../assets/DigitalClock.jpg';
 
 const StyledCard1 = styled.div`
   background-color: #fff;
@@ -63,11 +64,39 @@ const StyledCard = styled.div.attrs((props) => ({
     color: props.color,
   },
 }))`
-  background-color: rgb(23, 177, 141);
-  width: 20vw;
+  /* background-color: rgb(23, 177, 141); */
+  background: rgb(24 24 27 / 1);
+  margin: 0 auto;
+  display: flex;
+
+  .info_container {
+    h3 {
+      font-size: max(4em, 30px);
+    }
+  }
+
+  .img__container {
+    background: linear-gradient(
+      to right bottom,
+      rgb(167, 180, 243),
+      rgb(122, 142, 237)
+    );
+    padding: 1rem;
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: center;
+  }
+
+  img {
+    border-radius: 1rem;
+    object-fit: contain;
+    width: 500px;
+    height: 350px;
+  }
   button {
-    margin: 1em 0;
-    width: 100%;
+    background-color: rgb(79 70 229 / 1);
+    border-radius: 0.75rem;
+    width: 3.5rem;
   }
 
   input {
@@ -112,16 +141,21 @@ export default function Card({ clock, handleActiveClock, children }) {
 
   return (
     <StyledCard color={primaryColor}>
-      <br />
-      <br />
-      <span>{new Date().toLocaleTimeString('it-IT')}</span>
-      <button onClick={selectClockHandler}>Select</button>
-      <button>Edit</button>
-      <input
-        type='color'
-        value={primaryColor}
-        onChange={(e) => setThemeColor(e.target.value)}
-      />
+      <div className='info_container'>
+        <h3>Pixel Clock</h3>
+        <span>{new Date().toLocaleTimeString('it-IT')}</span>
+        <button onClick={selectClockHandler}>Select</button>
+        <button>Edit</button>
+        <input
+          type='color'
+          value={primaryColor}
+          onChange={(e) => setThemeColor(e.target.value)}
+        />
+      </div>
+
+      <div className='img__container'>
+        <img src={placeholder} alt='preview of clock' />
+      </div>
     </StyledCard>
   );
 }
