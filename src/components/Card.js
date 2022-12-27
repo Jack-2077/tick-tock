@@ -76,11 +76,7 @@ const StyledCard = styled.div.attrs((props) => ({
   }
 
   .img__container {
-    background: linear-gradient(
-      to right bottom,
-      rgb(167, 180, 243),
-      rgb(122, 142, 237)
-    );
+    background: ${(props) => props.color};
     padding: 1rem;
     display: flex;
     flex: 1 1 0%;
@@ -121,8 +117,9 @@ const StyledCard = styled.div.attrs((props) => ({
   }
 `;
 
-export default function Card({ clock, handleActiveClock, children }) {
-  const [primaryColor, setThemeColor] = useState('#045975');
+export default function Card({ clock, primaryColor, children }) {
+  console.log(primaryColor);
+  const [themeColor, setThemeColor] = useState(primaryColor);
   const [showClock, setShowClock] = useState(false);
 
   const selectClockHandler = () => {
@@ -143,14 +140,16 @@ export default function Card({ clock, handleActiveClock, children }) {
     <StyledCard color={primaryColor}>
       <div className='info_container'>
         <h3>Pixel Clock</h3>
-        <span>{new Date().toLocaleTimeString('it-IT')}</span>
+        <div>
+          <label htmlFor='input-color'>Edit</label>
+          <input
+            type='color'
+            name='input-color'
+            value={themeColor}
+            onChange={(e) => setThemeColor(e.target.value)}
+          />
+        </div>
         <button onClick={selectClockHandler}>Select</button>
-        <button>Edit</button>
-        <input
-          type='color'
-          value={primaryColor}
-          onChange={(e) => setThemeColor(e.target.value)}
-        />
       </div>
 
       <div className='img__container'>

@@ -42,14 +42,26 @@ function App() {
       {/* <FlipClock primaryColor='red' /> */}
 
       <StyledContainer>
-        <Card clock={'clock-1'} handleActiveClock={setActive}>
+        <Card
+          clock={'clock-1'}
+          handleActiveClock={setActive}
+          primaryColor='#A7B4F3'
+        >
           <FlipClock />
         </Card>
-        <Card clock={'clock-2'} handleActiveClock={setActive}>
+        <Card
+          clock={'clock-2'}
+          handleActiveClock={setActive}
+          primaryColor='#AB61EF'
+        >
           <AnalogClock />
         </Card>
 
-        <Card clock={'clock-3'} handleActiveClock={setActive}>
+        <Card
+          clock={'clock-3'}
+          handleActiveClock={setActive}
+          primaryColor='#A6DCCB'
+        >
           <DigitalClock />
         </Card>
       </StyledContainer>
