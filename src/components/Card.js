@@ -67,7 +67,7 @@ const StyledCard = styled.div`
   .info_container {
     padding: 2rem;
     h3 {
-      font-size: max(4em, 30px);
+      font-size: max(2em, 30px);
     }
   }
 
@@ -79,6 +79,7 @@ const StyledCard = styled.div`
   .edit-color {
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
 
   .img_container {
@@ -104,16 +105,16 @@ const StyledCard = styled.div`
     background-color: rgb(79 70 229 / 1);
     border-radius: 0.75rem;
     padding: 10px 16px;
-    transition: transform 150ms;
+    transition: opacity 150ms;
+    opacity: 0.9;
+    margin-top: 18px;
   }
 
   button:hover {
-    transform: translateY(-2px);
+    opacity: 1;
   }
 
   input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     width: 50px;
     height: 50px;
@@ -133,7 +134,7 @@ const StyledCard = styled.div`
   }
 `;
 
-export default function Card({ clock, primaryColor, children }) {
+export default function Card({ title, primaryColor, children }) {
   console.log(primaryColor);
   const [themeColor, setThemeColor] = useState(primaryColor);
   const [showClock, setShowClock] = useState(false);
@@ -155,10 +156,10 @@ export default function Card({ clock, primaryColor, children }) {
   return (
     <StyledCard color={primaryColor}>
       <div className='info_container'>
-        <h3>Pixel Clock</h3>
+        <h3>{title} Clock</h3>
         <div className='input_buttons'>
           <div className='edit-color'>
-            <label htmlFor='input-color'>Edit</label>
+            <label htmlFor='input-color'>Color</label>
             <input
               type='color'
               name='input-color'

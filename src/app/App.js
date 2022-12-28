@@ -3,6 +3,7 @@ import Card from '../components/Card';
 import styled from 'styled-components';
 import { AnalogClock, FlipClock, DigitalClock } from '../components/Clocks';
 import GlobalStyles from './GlobalStyles';
+import Buttons from '../components/Buttons';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -40,31 +41,27 @@ function App() {
     <>
       <GlobalStyles />
       {/* <FlipClock primaryColor='red' /> */}
-
-      <StyledContainer>
+      <Buttons />
+      {/* <StyledContainer>
         <Card
-          clock={'clock-1'}
+          title='Digital'
           handleActiveClock={setActive}
           primaryColor='#A7B4F3'
         >
           <FlipClock />
         </Card>
-        <Card
-          clock={'clock-2'}
-          handleActiveClock={setActive}
-          primaryColor='#AB61EF'
-        >
+        <Card title='Flip' handleActiveClock={setActive} primaryColor='#AB61EF'>
           <AnalogClock />
         </Card>
 
         <Card
-          clock={'clock-3'}
+          title='Analog'
           handleActiveClock={setActive}
           primaryColor='#A6DCCB'
         >
           <DigitalClock />
         </Card>
-      </StyledContainer>
+      </StyledContainer> */}
       {active === 'clock-1' && <FlipClock primaryColor={color} />}
       {active === 'clock-2' && <AnalogClock primaryColor={color} />}
       {active === 'clock-3' && <DigitalClock primaryColor={color} />}
