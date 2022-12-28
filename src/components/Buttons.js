@@ -90,13 +90,13 @@ export default function Buttons() {
       <div className='buttons-wrapper'>
         <button
           aria-disabled={false}
-          aria-label='FullScreen'
+          aria-label={`${isFullScreen ? 'Exit ' : ''}FullScreen`}
           onClick={handleToggleFullScreen}
         >
           {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
           <div className='popup'>
             <div className='popup-text'>
-              <span> {isFullScreen ? 'Exit FullScreen' : 'FullScreen'}</span>
+              <span> {`${isFullScreen ? 'Exit ' : ''}FullScreen`}</span>
             </div>
           </div>
         </button>
