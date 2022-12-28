@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as FullScreenIcon } from '../assets/FullScreen.svg';
 import { ReactComponent as ExitFullScreenIcon } from '../assets/ExitFullScreen.svg';
 import { ReactComponent as CloseIcon } from '../assets/Close.svg';
+import { useState } from 'react';
 
 const StyledButtonsContainer = styled.div`
   position: absolute;
@@ -73,15 +74,29 @@ const StyledButtonsContainer = styled.div`
     margin-left: 4rem;
   }
 `;
+
 export default function Buttons() {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const handleToggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+    setIsFullScreen(!isFullScreen);
+  };
   return (
     <StyledButtonsContainer>
       <div className='buttons-wrapper'>
-        <button aria-disabled={false} aria-label='FullScreen'>
-          <FullScreenIcon />
+        <button
+          aria-disabled={false}
+          aria-label='FullScreen'
+          onClick={handleToggleFullScreen}
+        >
+          {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
           <div className='popup'>
             <div className='popup-text'>
-              <span>Fullscreen</span>
+              <span> {isFullScreen ? 'Exit FullScreen' : 'FullScreen'}</span>
             </div>
           </div>
         </button>
