@@ -27,59 +27,34 @@ function App() {
   const [showClock, setShowClock] = useState(false);
   const [active, setActive] = useState('');
 
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setShowClock(true);
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-      setShowClock(false);
-    }
-  };
-
   return (
     <>
       <GlobalStyles />
-      {/* <FlipClock primaryColor='red' /> */}
-      <Buttons />
-      {/* <StyledContainer>
-        <Card
-          title='Digital'
-          handleActiveClock={setActive}
-          primaryColor='#A7B4F3'
-        >
-          <FlipClock />
-        </Card>
-        <Card title='Flip' handleActiveClock={setActive} primaryColor='#AB61EF'>
-          <AnalogClock />
-        </Card>
-
-        <Card
-          title='Analog'
-          handleActiveClock={setActive}
-          primaryColor='#A6DCCB'
-        >
-          <DigitalClock />
-        </Card>
-      </StyledContainer> */}
-      {active === 'clock-1' && <FlipClock primaryColor={color} />}
-      {active === 'clock-2' && <AnalogClock primaryColor={color} />}
-      {active === 'clock-3' && <DigitalClock primaryColor={color} />}
-      {/* <button onClick={toggleFullScreen}>FULLSCREEN</button>
-
-      {!showClock ? (
-        <>
-          <br />
-          <br />
-          <input
-            type='color'
-            value={themeColor}
-            onChange={(e) => setThemeColor(e.target.value)}
+      {!active ? (
+        <StyledContainer>
+          <Card
+            title='Digital'
+            handleActiveClock={setActive}
+            primaryColor='#A7B4F3'
           />
-        </>
+          <Card
+            title='Flip'
+            handleActiveClock={setActive}
+            primaryColor='#AB61EF'
+          />
+          <Card
+            title='Analog'
+            handleActiveClock={setActive}
+            primaryColor='#A6DCCB'
+          />
+        </StyledContainer>
       ) : (
-        <DigitalClock themeColor={themeColor} />
-      )} */}
+        <Buttons />
+      )}
+
+      {active === 'Flip' && <FlipClock primaryColor={color} />}
+      {active === 'Analog' && <AnalogClock primaryColor={color} />}
+      {active === 'Digital' && <DigitalClock primaryColor={color} />}
     </>
   );
 }

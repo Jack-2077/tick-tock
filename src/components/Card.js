@@ -134,24 +134,8 @@ const StyledCard = styled.div`
   }
 `;
 
-export default function Card({ title, primaryColor, children }) {
-  console.log(primaryColor);
+export default function Card({ title, handleActiveClock, primaryColor }) {
   const [themeColor, setThemeColor] = useState(primaryColor);
-  const [showClock, setShowClock] = useState(false);
-
-  const selectClockHandler = () => {
-    setShowClock(!showClock);
-
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  };
-
-  if (showClock) {
-    return <>{cloneElement(children, { primaryColor })}</>;
-  }
 
   return (
     <StyledCard color={primaryColor}>
@@ -167,7 +151,7 @@ export default function Card({ title, primaryColor, children }) {
               onChange={(e) => setThemeColor(e.target.value)}
             />
           </div>
-          <button onClick={selectClockHandler}>Select</button>
+          <button onClick={() => handleActiveClock(title)}>Select</button>
         </div>
       </div>
 
