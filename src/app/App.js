@@ -12,49 +12,44 @@ const StyledContainer = styled.div`
   justify-content: center;
 `;
 
-const StyledCard = styled.div`
-  background-color: rgb(23, 177, 141);
-  width: 20vw;
-
-  button {
-    margin: 1em 0;
-    width: 100%;
-  }
-`;
-
 function App() {
-  const [color, setColor] = useState('#045975');
-  const [showClock, setShowClock] = useState(false);
+  const [color, setColor] = useState({
+    Digital: '#A7B4F3',
+    Flip: '#AB61EF',
+    Analog: '#A6DCCB',
+  });
   const [active, setActive] = useState('');
 
   return (
     <>
       <GlobalStyles />
-      {!active ? (
+      {!active && (
         <StyledContainer>
           <Card
             title='Digital'
             handleActiveClock={setActive}
+            handlePrimaryColor={setColor}
             primaryColor='#A7B4F3'
           />
           <Card
             title='Flip'
             handleActiveClock={setActive}
+            handlePrimaryColor={setColor}
             primaryColor='#AB61EF'
           />
           <Card
             title='Analog'
             handleActiveClock={setActive}
+            handlePrimaryColor={setColor}
             primaryColor='#A6DCCB'
           />
         </StyledContainer>
-      ) : (
-        <Buttons />
       )}
+      {active && <Buttons handleActiveClock={setActive} />}
 
-      {active === 'Flip' && <FlipClock primaryColor={color} />}
-      {active === 'Analog' && <AnalogClock primaryColor={color} />}
-      {active === 'Digital' && <DigitalClock primaryColor={color} />}
+      {active === 'Flip' && <FlipClock primaryColor={color.Flip} />}
+      {active === 'Analog' && <AnalogClock primaryColor={color.Analog} />}
+      {active === 'Digital' && <DigitalClock primaryColor={color.Digital} />}
     </>
   );
 }

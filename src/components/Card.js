@@ -1,63 +1,6 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import DigitalClockImg from '../assets/DigitalClock.jpg';
 import placeholder from '../assets/DigitalClock.jpg';
-
-const StyledCard1 = styled.div`
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
-  display: flex;
-  max-width: 100%;
-  margin: 20px;
-  overflow: hidden;
-  width: 700px;
-
-  .card-info {
-    background-color: #2a265f;
-    color: #fff;
-    padding: 30px;
-    max-width: 250px;
-
-    h2 {
-      letter-spacing: 1px;
-      margin: 10px 0;
-    }
-
-    p {
-      color: #fff;
-      display: inline-block;
-      font-size: 12px;
-      opacity: 0.6;
-      margin-top: 30px;
-      text-decoration: none;
-    }
-  }
-
-  .card-preview {
-    padding: 30px;
-    position: relative;
-    width: 100%;
-
-    img {
-      width: 100px;
-      height: auto;
-    }
-    button {
-      background-color: #2a265f;
-      border: 0;
-      border-radius: 50px;
-      box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
-      color: #fff;
-      font-size: 16px;
-      padding: 12px 25px;
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      letter-spacing: 1px;
-    }
-  }
-`;
 
 const StyledCard = styled.div`
   background: rgb(24 24 27 / 1);
@@ -134,8 +77,20 @@ const StyledCard = styled.div`
   }
 `;
 
-export default function Card({ title, handleActiveClock, primaryColor }) {
+export default function Card({
+  title,
+  handleActiveClock,
+  primaryColor,
+  handlePrimaryColor,
+}) {
   const [themeColor, setThemeColor] = useState(primaryColor);
+
+  function change(e) {
+    setThemeColor(e.target.value);
+    handlePrimaryColor((prev) => {
+      return { ...prev, [title]: e.target.value };
+    });
+  }
 
   return (
     <StyledCard color={primaryColor}>
@@ -148,7 +103,7 @@ export default function Card({ title, handleActiveClock, primaryColor }) {
               type='color'
               name='input-color'
               value={themeColor}
-              onChange={(e) => setThemeColor(e.target.value)}
+              onChange={change}
             />
           </div>
           <button onClick={() => handleActiveClock(title)}>Select</button>

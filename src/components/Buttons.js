@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as FullScreenIcon } from '../assets/FullScreen.svg';
 import { ReactComponent as ExitFullScreenIcon } from '../assets/ExitFullScreen.svg';
 import { ReactComponent as CloseIcon } from '../assets/Close.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const StyledButtonsContainer = styled.div`
   position: absolute;
@@ -15,7 +15,15 @@ const StyledButtonsContainer = styled.div`
     display: flex;
     align-items: center;
     opacity: 1;
-    transition: opacity 0.3s ease-out 0s;
+    transition: opacity 0.5s ease-out 0s;
+  }
+
+  .fade {
+    opacity: 0;
+  }
+
+  .buttons-wrapper:hover {
+    opacity: 1;
   }
 
   button {
@@ -75,8 +83,18 @@ const StyledButtonsContainer = styled.div`
   }
 `;
 
-export default function Buttons() {
+export default function Buttons({ handleActiveClock }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [showElement, setShowElement] = useState(true);
+
+  useEffect(() => {
+    if (isFullScreen) {
+      setTimeout(() => {
+        setShowElement(false);
+      }, 3000);
+    }
+  }, [isFullScreen]);
+
   const handleToggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -87,7 +105,7 @@ export default function Buttons() {
   };
   return (
     <StyledButtonsContainer>
-      <div className='buttons-wrapper'>
+      <div className={`buttons-wrapper ${!showElement ? 'fade' : ''}`}>
         <button
           aria-disabled={false}
           aria-label={`${isFullScreen ? 'Exit ' : ''}FullScreen`}
@@ -101,7 +119,11 @@ export default function Buttons() {
           </div>
         </button>
 
-        <button aria-disabled={false} aria-label='Exit Full Screen'>
+        <button
+          aria-disabled={false}
+          aria-label='Exit Full Screen'
+          onClick={() => handleActiveClock('')}
+        >
           <CloseIcon />
           <div className='popup'>
             <div className='popup-text'>
