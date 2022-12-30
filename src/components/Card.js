@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styled from 'styled-components/macro';
 import placeholder from '../assets/DigitalClock.jpg';
 
@@ -77,15 +77,11 @@ const StyledCard = styled.div`
   }
 `;
 
-export default function Card({
-  title,
-  handleActiveClock,
-  primaryColor,
-  handlePrimaryColor,
-}) {
+function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
+  console.log('ren', title);
   const [themeColor, setThemeColor] = useState(primaryColor);
 
-  function change(e) {
+  function handleColorChange(e) {
     setThemeColor(e.target.value);
     handlePrimaryColor((prev) => {
       return { ...prev, [title]: e.target.value };
@@ -103,7 +99,7 @@ export default function Card({
               type='color'
               name='input-color'
               value={themeColor}
-              onChange={change}
+              onChange={handleColorChange}
             />
           </div>
           <button onClick={() => handleActiveClock(title)}>Select</button>
@@ -116,3 +112,5 @@ export default function Card({
     </StyledCard>
   );
 }
+
+export default memo(Card);
