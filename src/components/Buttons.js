@@ -95,26 +95,38 @@ export default function Buttons({ handleActiveClock }) {
     }
   }, [isFullScreen]);
 
+  const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  };
+
+  const handleExitScreen = () => {
+    exitFullscreen();
+    handleActiveClock('');
+  };
+
   const handleToggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
     }
+    exitFullscreen();
     setIsFullScreen(!isFullScreen);
   };
+
+  const popupText = `${isFullScreen ? 'Exit ' : ''}FullScreen`;
   return (
     <StyledButtonsContainer>
       <div className={`buttons-wrapper ${!showElement ? 'fade' : ''}`}>
         <button
           aria-disabled={false}
-          aria-label={`${isFullScreen ? 'Exit ' : ''}FullScreen`}
+          aria-label={popupText}
           onClick={handleToggleFullScreen}
         >
           {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
           <div className='popup'>
             <div className='popup-text'>
-              <span> {`${isFullScreen ? 'Exit ' : ''}FullScreen`}</span>
+              <span>{popupText}</span>
             </div>
           </div>
         </button>
@@ -122,7 +134,7 @@ export default function Buttons({ handleActiveClock }) {
         <button
           aria-disabled={false}
           aria-label='Exit Full Screen'
-          onClick={() => handleActiveClock('')}
+          onClick={handleExitScreen}
         >
           <CloseIcon />
           <div className='popup'>

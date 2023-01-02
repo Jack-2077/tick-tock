@@ -9,11 +9,15 @@ export const StyledAnalogClock = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 2px 30px ${(props) => props.color};
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: -15px 10px 150px -9px #7a66f7;
+    /* box-shadow: 0px 10px 35px -11px ${(props) => props.color}; */
+    /* box-shadow: 0 2px 30px ${(props) => props.color}; */
     font-size: 24px;
     color: #fff;
     text-align: center;
-    background: ${(props) => props.color};
+    /* background: ${(props) => props.color}; */
   }
 
   .clock::after {
@@ -68,6 +72,30 @@ export const StyledAnalogClock = styled.div`
     font-weight: 700;
   }
 
+  .one,
+  .two,
+  .four,
+  .five,
+  .seven,
+  .eight,
+  .ten,
+  .eleven {
+    display: block;
+    height: 10px;
+    width: 4px;
+    border-radius: 0 0 100px 100px;
+    background-color: #fff;
+  }
+
+  .minutes {
+    display: block;
+    width: 1px;
+    height: 5px;
+
+    top: 50%;
+    left: 50%;
+  }
+
   .twelve {
     top: 10px;
     left: 46%;
@@ -76,16 +104,19 @@ export const StyledAnalogClock = styled.div`
   .one {
     top: 10%;
     right: 26%;
+    transform: translate(-50%, -50%) rotate(30deg);
   }
 
   .eleven {
     top: 10%;
     left: 26%;
+    transform: translate(-50%, -50%) rotate(330deg);
   }
 
   .two {
     top: 25%;
     right: 10%;
+    transform: translate(-50%, -50%) rotate(60deg);
   }
 
   .three {
@@ -96,11 +127,13 @@ export const StyledAnalogClock = styled.div`
   .four {
     right: 30px;
     top: 67%;
+    transform: translate(-50%, -50%) rotate(120deg);
   }
 
   .five {
     right: 78px;
     top: 80%;
+    transform: translate(-50%, -50%) rotate(150deg);
   }
 
   .six {
@@ -111,11 +144,13 @@ export const StyledAnalogClock = styled.div`
   .seven {
     left: 80px;
     top: 82%;
+    transform: translate(-50%, -50%) rotate(210deg);
   }
 
   .eight {
     left: 30px;
     top: 67%;
+    transform: translate(-50%, -50%) rotate(240deg);
   }
 
   .nine {
@@ -126,5 +161,6 @@ export const StyledAnalogClock = styled.div`
   .ten {
     top: 25%;
     left: 10%;
+    transform: translate(-50%, -50%) rotate(300deg);
   }
 `;

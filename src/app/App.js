@@ -6,10 +6,15 @@ import GlobalStyles from './GlobalStyles';
 import Buttons from '../components/Buttons';
 
 const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  justify-content: center;
+  h1 {
+    text-align: center;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+  }
 `;
 
 function App() {
@@ -23,28 +28,32 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      {!active && (
+      <AnalogClock primaryColor={color.Analog} />
+      {/* {!active && (
         <StyledContainer>
-          <Card
-            title='Digital'
-            handleActiveClock={setActive}
-            handlePrimaryColor={setColor}
-            primaryColor='#A7B4F3'
-          />
-          <Card
-            title='Flip'
-            handleActiveClock={setActive}
-            handlePrimaryColor={setColor}
-            primaryColor='#AB61EF'
-          />
-          <Card
-            title='Analog'
-            handleActiveClock={setActive}
-            handlePrimaryColor={setColor}
-            primaryColor='#A6DCCB'
-          />
+          <h1>Tick Tock</h1>
+          <div className='card-container'>
+            <Card
+              title='Digital'
+              handleActiveClock={setActive}
+              handlePrimaryColor={setColor}
+              primaryColor='#A7B4F3'
+            />
+            <Card
+              title='Flip'
+              handleActiveClock={setActive}
+              handlePrimaryColor={setColor}
+              primaryColor='#AB61EF'
+            />
+            <Card
+              title='Analog'
+              handleActiveClock={setActive}
+              handlePrimaryColor={setColor}
+              primaryColor='#A6DCCB'
+            />
+          </div>
         </StyledContainer>
-      )}
+      )} */}
       {active && <Buttons handleActiveClock={setActive} />}
 
       {active === 'Flip' && <FlipClock primaryColor={color.Flip} />}

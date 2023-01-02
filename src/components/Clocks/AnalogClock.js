@@ -13,6 +13,31 @@ const MemoizedClockHand = memo(({ time, type, angleToRotate }) => {
   );
 });
 
+//get the angle
+//add 6 to it - 5 times
+//map it to a span
+
+const MinuteSpan = ({ angle }) => {
+  const arr = [];
+  for (let i = angle, j = 0; j < 5; j++, i += 6) {
+    arr.push(i);
+  }
+
+  return (
+    <>
+      {arr.map((angleToBend) => (
+        <span
+          className='minutes'
+          key={angleToBend}
+          style={{
+            transform: `translate(-50%, -50%) rotate(${angleToBend}deg)`,
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
 export default function AnalogClock({ primaryColor }) {
   const [time, setTime] = useState(() => new Date('Dec 25 2022 10:10:35'));
 
@@ -42,17 +67,29 @@ export default function AnalogClock({ primaryColor }) {
           type='sec'
         />
         <span className='twelve'>12</span>
-        <span className='one'>1</span>
-        <span className='two'>2</span>
+        <MinuteSpan angle={6} />
+        <span className='one' />
+        <MinuteSpan angle={36} />
+        <span className='two' />
+        <MinuteSpan angle={66} />
         <span className='three'>3</span>
-        <span className='four'>4</span>
-        <span className='five'>5</span>
+        <MinuteSpan angle={96} />
+        <span className='four' />
+        <MinuteSpan angle={126} />
+        <span className='five' />
+        <MinuteSpan angle={156} />
         <span className='six'>6</span>
-        <span className='seven'>7</span>
-        <span className='eight'>8</span>
+        <MinuteSpan angle={186} />
+        <span className='seven' />
+        <MinuteSpan angle={216} />
+        <span className='eight' />
+        <MinuteSpan angle={246} />
         <span className='nine'>9</span>
-        <span className='ten'>10</span>
-        <span className='eleven'>11</span>
+        <MinuteSpan angle={276} />
+        <span className='ten' />
+        <MinuteSpan angle={306} />
+        <span className='eleven' />
+        <MinuteSpan angle={336} />
       </div>
     </StyledAnalogClock>
   );

@@ -78,7 +78,6 @@ const StyledCard = styled.div`
 `;
 
 function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
-  console.log('ren', title);
   const [themeColor, setThemeColor] = useState(primaryColor);
 
   function handleColorChange(e) {
@@ -90,6 +89,9 @@ function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
 
   return (
     <StyledCard color={primaryColor}>
+      <div className='img_container'>
+        <img src={placeholder} alt='preview of clock' />
+      </div>
       <div className='info_container'>
         <h3>{title} Clock</h3>
         <div className='input_buttons'>
@@ -104,10 +106,6 @@ function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
           </div>
           <button onClick={() => handleActiveClock(title)}>Select</button>
         </div>
-      </div>
-
-      <div className='img_container'>
-        <img src={placeholder} alt='preview of clock' />
       </div>
     </StyledCard>
   );
