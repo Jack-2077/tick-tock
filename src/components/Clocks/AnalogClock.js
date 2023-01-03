@@ -65,16 +65,16 @@ export default function AnalogClock({ primaryColor }) {
       />
       <ul>
         <li className='twelve'>
-          <i>12</i>
+          <div>12</div>
         </li>
         <li className='three'>
-          <i>3</i>
+          <div>3</div>
         </li>
         <li className='six'>
-          <i>6</i>
+          <div>6</div>
         </li>
         <li className='nine'>
-          <i>9</i>
+          <div>9</div>
         </li>
       </ul>
       <MinuteSpan angle={6} />

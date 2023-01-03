@@ -29,7 +29,7 @@ export const StyledAnalogClock = styled.div`
     left: 0;
     transform-origin: 50% 100%;
 
-    i {
+    div {
       color: #fff;
       position: absolute;
       top: 0;
@@ -40,21 +40,21 @@ export const StyledAnalogClock = styled.div`
 
   .three {
     transform: rotate(90deg);
-    i {
+    div {
       transform: translate(120%, -180%) rotate(-90deg);
     }
   }
 
   .six {
     transform: rotate(180deg);
-    i {
+    div {
       transform: translate(-50%, -270%) rotate(-180deg);
     }
   }
 
   .nine {
     transform: rotate(270deg);
-    i {
+    div {
       transform: translate(-220%, -180%) rotate(-270deg);
     }
   }
