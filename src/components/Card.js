@@ -77,8 +77,13 @@ const StyledCard = styled.div`
   }
 `;
 
-function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
-  const [themeColor, setThemeColor] = useState(primaryColor);
+function Card({
+  title,
+  handleActiveClock,
+  backgroundColor,
+  handlePrimaryColor,
+}) {
+  const [themeColor, setThemeColor] = useState(backgroundColor);
 
   function handleColorChange(e) {
     setThemeColor(e.target.value);
@@ -88,7 +93,7 @@ function Card({ title, handleActiveClock, primaryColor, handlePrimaryColor }) {
   }
 
   return (
-    <StyledCard color={primaryColor}>
+    <StyledCard color={backgroundColor}>
       <div className='img_container'>
         <img src={placeholder} alt='preview of clock' />
       </div>

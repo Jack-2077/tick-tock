@@ -17,43 +17,51 @@ const StyledContainer = styled.div`
   }
 `;
 
+const CLOCKS = [
+  {
+    title: 'Flip',
+    color: '#AB61EF',
+    desc: 'Coolest clock in town. It may or may not be inspired from this codepen',
+  },
+  {
+    title: 'Digital',
+    color: '#A7B4F3',
+    desc: "My go-to clock. Inspired from Apple iMac's screensaver",
+  },
+  {
+    title: 'Analog',
+    color: '#AB61EF',
+    desc: 'A stopwatch style clock inspired from my OnePlus clock app',
+  },
+];
 function App() {
   const [color, setColor] = useState({
     Digital: '#A7B4F3',
     Flip: '#AB61EF',
-    Analog: '#A6DCCB',
+    Analog: '#AB61EF',
   });
   const [active, setActive] = useState('');
 
   return (
     <>
       <GlobalStyles />
-      <AnalogClock primaryColor={color.Analog} />
-      {/* {!active && (
+
+      {!active && (
         <StyledContainer>
           <h1>Tick Tock</h1>
           <div className='card-container'>
-            <Card
-              title='Digital'
-              handleActiveClock={setActive}
-              handlePrimaryColor={setColor}
-              primaryColor='#A7B4F3'
-            />
-            <Card
-              title='Flip'
-              handleActiveClock={setActive}
-              handlePrimaryColor={setColor}
-              primaryColor='#AB61EF'
-            />
-            <Card
-              title='Analog'
-              handleActiveClock={setActive}
-              handlePrimaryColor={setColor}
-              primaryColor='#A6DCCB'
-            />
+            {CLOCKS.map(({ title, color, desc }) => (
+              <Card
+                title={title}
+                backgroundColor={color}
+                desc={desc}
+                handleActiveClock={setActive}
+                handlePrimaryColor={setColor}
+              />
+            ))}
           </div>
         </StyledContainer>
-      )} */}
+      )}
       {active && <Buttons handleActiveClock={setActive} />}
 
       {active === 'Flip' && <FlipClock primaryColor={color.Flip} />}
