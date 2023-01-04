@@ -79,6 +79,7 @@ const StyledCard = styled.div`
 
 function Card({
   title,
+  desc,
   handleActiveClock,
   backgroundColor,
   handlePrimaryColor,
@@ -99,6 +100,7 @@ function Card({
       </div>
       <div className='info_container'>
         <h3>{title} Clock</h3>
+        <p>{desc}</p>
         <div className='input_buttons'>
           <div className='edit-color'>
             <label htmlFor='input-color'>Color</label>

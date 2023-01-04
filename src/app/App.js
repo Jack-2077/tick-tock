@@ -17,11 +17,13 @@ const StyledContainer = styled.div`
   }
 `;
 
+const flipDesc =
+  "Coolest clock in town. It may or may not be inspired from <a href='https://codepen.io/nirlodsn/pen/yLWLpp'>this</a> codepen";
 const CLOCKS = [
   {
     title: 'Flip',
     color: '#AB61EF',
-    desc: 'Coolest clock in town. It may or may not be inspired from this codepen',
+    desc: <span dangerouslySetInnerHTML={{ __html: flipDesc }} />,
   },
   {
     title: 'Digital',
@@ -52,6 +54,7 @@ function App() {
           <div className='card-container'>
             {CLOCKS.map(({ title, color, desc }) => (
               <Card
+                key={title}
                 title={title}
                 backgroundColor={color}
                 desc={desc}
