@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react';
 import styled from 'styled-components/macro';
 import placeholder from '../assets/DigitalClock.jpg';
 
-const StyledCard = styled.div`
+const StyledCard1 = styled.div`
   background: rgb(24 24 27 / 1);
   margin: 0 auto;
   display: flex;
@@ -77,6 +77,111 @@ const StyledCard = styled.div`
   }
 `;
 
+const StyledCard = styled.div`
+  border-radius: 8px;
+  border: 1px solid rgb(55, 58, 64);
+  overflow: hidden;
+  background-color: rgb(26, 27, 30);
+  padding: 16px;
+  max-width: 400px;
+
+  .img_container {
+    display: block;
+    margin: -16px -16px 0;
+    border-top: 0;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+  }
+
+  .info_container {
+    margin: 16px -16px 0;
+    border-bottom: 1px solid rgb(55, 58, 64);
+    padding: 0 16px 16px;
+  }
+
+  a {
+    color: white;
+  }
+
+  .btn_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 20px;
+    flex: 1 1 0%;
+    padding: 0px 18px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    /* background-color: rgb(25, 113, 194);
+    rgb(217, 97, 87)
+    rgb(106, 89, 248)-1;
+    
+    rgb(121, 153, 252)-2;
+    
+    
+    rgb(124, 86, 253)--1;
+    rgb(153, 20, 243)--1;
+    rgb(249, 33, 83);
+    rgb(110, 173, 247);
+    rgb(94, 224, 71);
+    rgb(159, 221, 57);
+    rgb(247, 205, 96); */
+    background-color: rgb(153, 20, 243);
+    color: rgb(255, 255, 255);
+
+    div {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  button:hover {
+    background-color: rgb(168 85 247);
+  }
+
+  .edit-color {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  input {
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  input::-webkit-color-swatch {
+    border-radius: 50%;
+    border: none;
+  }
+
+  input::-moz-color-swatch {
+    border-radius: 50%;
+    border: none;
+  }
+`;
+
 function Card({
   title,
   desc,
@@ -101,7 +206,12 @@ function Card({
       <div className='info_container'>
         <h3>{title} Clock</h3>
         <p>{desc}</p>
-        <div className='input_buttons'>
+      </div>
+      <div>
+        <div className='btn_container'>
+          <button onClick={() => handleActiveClock(title)}>
+            <div>Select</div>
+          </button>
           <div className='edit-color'>
             <label htmlFor='input-color'>Color</label>
             <input
@@ -111,7 +221,6 @@ function Card({
               onChange={handleColorChange}
             />
           </div>
-          <button onClick={() => handleActiveClock(title)}>Select</button>
         </div>
       </div>
     </StyledCard>
@@ -119,3 +228,27 @@ function Card({
 }
 
 export default memo(Card);
+
+{
+  /* <StyledCard color={backgroundColor}>
+<div className='img_container'>
+  <img src={placeholder} alt='preview of clock' />
+</div>
+<div className='info_container'>
+  <h3>{title} Clock</h3>
+  <p>{desc}</p>
+  <div className='input_buttons'>
+    <div className='edit-color'>
+      <label htmlFor='input-color'>Color</label>
+      <input
+        type='color'
+        name='input-color'
+        value={themeColor}
+        onChange={handleColorChange}
+      />
+    </div>
+    <button onClick={() => handleActiveClock(title)}>Select</button>
+  </div>
+</div>
+</StyledCard> */
+}

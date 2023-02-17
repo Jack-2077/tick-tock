@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { AnalogClock, FlipClock, DigitalClock } from '../components/Clocks';
 import GlobalStyles from './GlobalStyles';
 import Buttons from '../components/Buttons';
+import { CLOCKS_DESC } from './data-svc';
 
 const StyledContainer = styled.div`
   h1 {
@@ -11,31 +12,11 @@ const StyledContainer = styled.div`
   }
   .card-container {
     display: flex;
-    flex-direction: column;
     gap: 2em;
     justify-content: center;
   }
 `;
 
-const flipDesc =
-  "Coolest clock in town. It may or may not be inspired from <a href='https://codepen.io/nirlodsn/pen/yLWLpp'>this</a> codepen";
-const CLOCKS = [
-  {
-    title: 'Flip',
-    color: '#AB61EF',
-    desc: <span dangerouslySetInnerHTML={{ __html: flipDesc }} />,
-  },
-  {
-    title: 'Digital',
-    color: '#A7B4F3',
-    desc: "My go-to clock. Inspired from Apple iMac's screensaver",
-  },
-  {
-    title: 'Analog',
-    color: '#AB61EF',
-    desc: 'A stopwatch style clock inspired from my OnePlus clock app',
-  },
-];
 function App() {
   const [color, setColor] = useState({
     Digital: '#A7B4F3',
@@ -52,7 +33,7 @@ function App() {
         <StyledContainer>
           <h1>Tick Tock</h1>
           <div className='card-container'>
-            {CLOCKS.map(({ title, color, desc }) => (
+            {CLOCKS_DESC.map(({ title, color, desc }) => (
               <Card
                 key={title}
                 title={title}
