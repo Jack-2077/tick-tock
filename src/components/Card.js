@@ -185,6 +185,7 @@ const StyledCard = styled.div`
 function Card({
   title,
   desc,
+  imgSrc,
   handleActiveClock,
   backgroundColor,
   handlePrimaryColor,
@@ -201,7 +202,7 @@ function Card({
   return (
     <StyledCard color={backgroundColor}>
       <div className='img_container'>
-        <img src={placeholder} alt='preview of clock' />
+        <img src={imgSrc} alt='preview of clock' />
       </div>
       <div className='info_container'>
         <h3>{title} Clock</h3>

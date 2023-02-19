@@ -1,6 +1,11 @@
+import DigitalClockImg from '../assets/DigitalClock.jpg';
+import FlipClockImg from '../assets/FlipClock.jpg';
+import AnalogClockImg from '../assets/FlipClock.jpg';
+
 export const CLOCKS_DESC = [
   {
     title: 'Flip',
+    img: FlipClockImg,
     color: '#AB61EF',
     desc: (
       <span
@@ -13,11 +18,13 @@ export const CLOCKS_DESC = [
   },
   {
     title: 'Digital',
+    img: DigitalClockImg,
     color: '#A7B4F3',
     desc: "My go-to clock. Inspired from Apple iMac's screensaver",
   },
   {
     title: 'Analog',
+    img: AnalogClockImg,
     color: '#D78306',
     desc: 'A stopwatch style clock inspired from my OnePlus clock app',
   },

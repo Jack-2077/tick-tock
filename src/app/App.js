@@ -12,6 +12,7 @@ const StyledContainer = styled.div`
   }
   .card-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 2em;
     justify-content: center;
   }
@@ -33,10 +34,11 @@ function App() {
         <StyledContainer>
           <h1>Tick Tock</h1>
           <div className='card-container'>
-            {CLOCKS_DESC.map(({ title, color, desc }) => (
+            {CLOCKS_DESC.map(({ title, color, desc, img }) => (
               <Card
                 key={title}
                 title={title}
+                imgSrc={img}
                 backgroundColor={color}
                 desc={desc}
                 handleActiveClock={setActive}
