@@ -169,7 +169,7 @@ export const StyledAnalogClock = styled.div`
     background: ${(props) => props.color};
     top: 5%;
     left: 50%;
-    transform-origin: 0px 23vh;
+    transform-origin: 0px 170px;
     border-radius: 16px;
   }
 `;
