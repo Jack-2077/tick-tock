@@ -157,7 +157,7 @@ export const StyledAnalogClock = styled.div`
     left: 49.5%;
     z-index: 4;
     &::before {
-      height: 165px; //105px
+      height: 165px;
     }
   }
 

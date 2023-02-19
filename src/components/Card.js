@@ -127,20 +127,6 @@ const StyledCard = styled.div`
     user-select: none;
     cursor: pointer;
     border: 1px solid transparent;
-    /* background-color: rgb(25, 113, 194);
-    rgb(217, 97, 87)
-    rgb(106, 89, 248)-1;
-    
-    rgb(121, 153, 252)-2;
-    
-    
-    rgb(124, 86, 253)--1;
-    rgb(153, 20, 243)--1;
-    rgb(249, 33, 83);
-    rgb(110, 173, 247);
-    rgb(94, 224, 71);
-    rgb(159, 221, 57);
-    rgb(247, 205, 96); */
     background-color: rgb(153, 20, 243);
     color: rgb(255, 255, 255);
 

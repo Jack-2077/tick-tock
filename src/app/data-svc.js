@@ -25,7 +25,7 @@ export const CLOCKS_DESC = [
   {
     title: 'Analog',
     img: AnalogClockImg,
-    color: '#D78306',
+    color: '#AB61EF',
     desc: 'A stopwatch style clock inspired from my OnePlus clock app',
   },
 ];
