@@ -1,6 +1,6 @@
 # Tick-Tock
 
-![image](https://user-images.githubusercontent.com/78120697/219978509-27a6dc98-11ad-47ab-996a-ee36466cb90d.png)
+![image](https://user-images.githubusercontent.com/78120697/219978666-5846fa29-75be-42f1-8d71-698f2439429b.png)
 
 ## Tech Stack
 
