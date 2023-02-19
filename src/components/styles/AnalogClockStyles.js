@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledAnalogClock = styled.div`
-  font-family: 'Roboto', sans-serif;
-  width: 272px;
-  height: 272px;
+  width: 400px;
+  height: 400px;
   background-color: #000;
   border-radius: 100%;
   position: absolute;
@@ -30,6 +29,7 @@ export const StyledAnalogClock = styled.div`
     transform-origin: 50% 100%;
 
     div {
+      font-size: 22px;
       color: #fff;
       position: absolute;
       top: 0;
@@ -39,13 +39,19 @@ export const StyledAnalogClock = styled.div`
   }
 
   .three {
+    top: -5px;
     transform: rotate(90deg);
     div {
       transform: translate(120%, -180%) rotate(-90deg);
     }
   }
 
+  .twelve {
+    top: -5px;
+  }
+
   .six {
+    top: -8px;
     transform: rotate(180deg);
     div {
       transform: translate(-50%, -270%) rotate(-180deg);
@@ -53,6 +59,7 @@ export const StyledAnalogClock = styled.div`
   }
 
   .nine {
+    top: -5px;
     transform: rotate(270deg);
     div {
       transform: translate(-220%, -180%) rotate(-270deg);
@@ -111,7 +118,7 @@ export const StyledAnalogClock = styled.div`
 
   .hour-hand,
   .minute-hand {
-    width: 3px;
+    width: 4px;
     height: 1px;
     position: absolute;
     left: 49.5%;
@@ -120,8 +127,8 @@ export const StyledAnalogClock = styled.div`
     z-index: 5;
 
     &::before {
-      width: 3px;
-      height: 80px;
+      width: 4px;
+      height: 110px;
       background-color: #fff;
       border-radius: 3px;
 
@@ -140,9 +147,8 @@ export const StyledAnalogClock = styled.div`
       background: #fff;
       border-radius: 3px;
 
-      width: 3px;
-      height: 10px;
-      top: 3px;
+      width: 4px;
+      height: 25px;
     }
   }
 
@@ -151,19 +157,19 @@ export const StyledAnalogClock = styled.div`
     left: 49.5%;
     z-index: 4;
     &::before {
-      height: 105px;
+      height: 165px; //105px
     }
   }
 
   .second-hand {
     position: absolute;
     border-radius: 100%;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     background: ${(props) => props.color};
-    top: 7.1%;
-    left: 51%;
-    transform-origin: 0 15vh;
+    top: 5%;
+    left: 50%;
+    transform-origin: 0px 23vh;
     border-radius: 16px;
   }
 `;

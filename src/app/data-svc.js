@@ -1,6 +1,6 @@
 import DigitalClockImg from '../assets/DigitalClock.jpg';
 import FlipClockImg from '../assets/FlipClock.jpg';
-import AnalogClockImg from '../assets/FlipClock.jpg';
+import AnalogClockImg from '../assets/AnalogClock.jpg';
 
 export const CLOCKS_DESC = [
   {
