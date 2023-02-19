@@ -54,12 +54,12 @@ export default function FlipClock({ primaryColor }) {
   const [time, setTime] = useState(() => new Date());
   // const time = new Date('December 25, 1995 12:35:10');
 
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     setTime(new Date());
-  //   }, 1000);
-  //   return () => clearInterval(id);
-  // }, []);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const hours = time.getHours();
   const minutes = time.getMinutes();

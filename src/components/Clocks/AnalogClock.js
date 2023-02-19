@@ -39,12 +39,12 @@ export default function AnalogClock({ primaryColor }) {
   console.log(primaryColor);
   const [time, setTime] = useState(() => new Date('Dec 25 2022 10:10:35'));
 
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     setTime(new Date());
-  //   }, 1000);
-  //   return () => clearInterval(id);
-  // }, []);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <StyledAnalogClock color={primaryColor}>
